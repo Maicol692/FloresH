@@ -15,10 +15,12 @@ body {
   align-items: flex-end;
   justify-content: center;
   min-height: 100vh;
-  background-color: var(--dark-color);
+  background: url('../img/kaneki.jpg') no-repeat center center fixed;
+  background-size: cover;
   overflow: hidden;
   perspective: 1000px;
 }
+
 
 .night {
   position: fixed;
@@ -28,14 +30,51 @@ body {
   width: 100%;
   height: 100%;
   filter: blur(0.1vmin);
-  background-image: radial-gradient(ellipse at top, transparent 0%, var(--dark-color)), 
-  radial-gradient(ellipse at bottom, var(--dark-color), rgba(145, 233, 255, 0.2)), 
-  repeating-linear-gradient(220deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, 
-  transparent 22px), repeating-linear-gradient(189deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, 
-  transparent 19px, transparent 22px), repeating-linear-gradient(148deg, rgb(0, 0, 0) 0px, 
-  rgb(0, 0, 0) 19px, transparent 19px, transparent 22px), linear-gradient(90deg, rgb(21, 255, 0), 
-  rgb(240, 240, 240));
+  background: url('../img/kaneki.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
+/* 📌 Contenedor de las imágenes */
+.contenedor-imagenes {
+  display: flex; /* 📌 Alinea las imágenes en fila */
+  justify-content: center; /* 📌 Centra horizontalmente */
+  align-items: center; /* 📌 Centra verticalmente */
+  gap: 20px; /* 📌 Espacio entre imágenes */
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* 🎨 Estilos generales para las imágenes */
+.img-gatos, .img-flor {
+  width: 200px;
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* 🎨 Efecto al pasar el mouse */
+.img-gatos:hover, .img-flor:hover {
+  transform: scale(1.1) rotate(3deg);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* ✨ Efecto al hacer clic */
+.img-gatos:active, .img-flor:active {
+  animation: bounce 0.4s ease;
+}
+
+@keyframes bounce {
+  0% { transform: scale(1.1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1.1); }
+}
+
+
+
+
+
+
 
 .flowers {
   position: relative;
@@ -158,11 +197,14 @@ body {
   left: 0;
   top: 0;
   transform: translate(-50%, -100%);
-  width: 8vmin;
-  height: 8vmin;
-  background-color: #1aaa15;
-  filter: blur(10vmin);
+  width: 12vmin; /* Aumenta el tamaño para mayor efecto */
+  height: 12vmin;
+  background-color: rgba(0, 0, 0, 0.6); /* Oscuro para mayor contraste */
+  filter: blur(5vmin); /* Reduce la dispersión para no perder la forma */
+  border-radius: 50%; /* Hace que el fondo sea más uniforme */
+  z-index: -1; /* Para que quede detrás de las hojas */
 }
+
 .flower__leaf {
   position: absolute;
   bottom: 0;
@@ -171,11 +213,15 @@ body {
   height: 11vmin;
   border-radius: 51% 49% 47% 53%/44% 45% 55% 69%;
   background-color: #1aaa15;
-  background-image: linear-gradient(to top, #fce700, #fce700);
+  background-image: linear-gradient(to top, rgb(208, 25, 25), rgb(208, 25, 25));
   transform-origin: bottom center;
   opacity: 0.9;
-  box-shadow: inset 0 0 2vmin rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    inset 0 0 2vmin rgba(255, 255, 255, 0.5), 
+    0 0 3vmin rgba(0, 0, 0, 0.7); /* Agrega un resplandor oscuro alrededor */
+  filter: drop-shadow(0 0 1.5vmin rgba(0, 0, 0, 0.8)); /* Sombra externa suave */
 }
+
 .flower__leaf--1 {
   transform: translate(-10%, 1%) rotateY(40deg) rotateX(-50deg);
 }
@@ -191,7 +237,7 @@ body {
   transform-origin: bottom left;
   border-radius: 4vmin 10vmin 4vmin 4vmin;
   transform: translate(0%, 18%) rotateX(70deg) rotate(-43deg);
-  background-image: linear-gradient(to top, #fce700, #fce700);
+  background-image: linear-gradient(to top, #ea5252, #ea5252);
   z-index: 1;
   opacity: 0.8;
 }
@@ -233,13 +279,13 @@ body {
   rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px), repeating-linear-gradient(67.5deg, 
   rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px), 
   repeating-linear-gradient(67.5deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, 
-  transparent 1px, transparent 12px), linear-gradient(90deg, rgb(190, 133, 0), rgb(190, 133, 0));
+  transparent 1px, transparent 12px), linear-gradient(90deg, rgb(190, 0, 0), rgb(190, 0, 0));
 }
 .flower__line {
   height: 55vmin;
   width: 1.5vmin;
   background-image: linear-gradient(to left, rgba(0, 0, 0, 0.2), transparent, 
-  rgba(255, 255, 255, 0.2)), linear-gradient(to top, transparent 10%, #064600, #064600);
+  rgba(255, 255, 255, 0.2)), linear-gradient(to top, transparent 10%, rgb(133, 17, 17), rgb(133, 17, 17));
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
   -webkit-animation: grow-flower-tree 4s backwards;
           animation: grow-flower-tree 4s backwards;
@@ -254,8 +300,13 @@ body {
   height: var(--h);
   border-top-right-radius: var(--h);
   border-bottom-left-radius: var(--h);
-  background-image: linear-gradient(to top, rgba(20, 122, 20, 0.4), #1aaa15);
+  background-image: linear-gradient(to top, rgba(107, 15, 15, 0.4), rgb(208, 25, 25));
+  box-shadow: 
+    0 0 2vmin rgba(0, 0, 0, 0.8), /* Resplandor oscuro alrededor */
+    inset 0 0 1vmin rgba(255, 255, 255, 0.3); /* Brillo sutil para más volumen */
+  filter: drop-shadow(0 0 1.5vmin rgba(0, 0, 0, 0.9)); /* Sombra externa */
 }
+
 .flower__line__leaf--1 {
   transform: rotate(70deg) rotateY(30deg);
 }
@@ -291,14 +342,14 @@ body {
   bottom: 0vmin;
   width: 1vmin;
   height: 1vmin;
-  background-color: rgb(255, 251, 0);
+  background-color: rgb(118, 11, 11);
   border-radius: 50%;
   filter: blur(0.2vmin);
   -webkit-animation: light-ans 4s linear infinite backwards;
           animation: light-ans 4s linear infinite backwards;
 }
 .flower__light:nth-child(odd) {
-  background-color: #fce700;
+  background-color: #ac3030;
 }
 .flower__light--1 {
   left: -2vmin;
@@ -341,7 +392,7 @@ body {
           animation-delay: 3.5s;
 }
 .flower__grass {
-  --c: #00b815;
+  --c: #b80000;
   --line-w: 1.5vmin;
   position: absolute;
   bottom: 12vmin;
@@ -352,7 +403,9 @@ body {
   z-index: 20;
   transform-origin: bottom center;
   transform: rotate(-48deg) rotateY(40deg);
+  filter: drop-shadow(0 0 1.5vmin rgba(0, 0, 0, 0.9)); /* Agrega sombra para mejorar la visibilidad */
 }
+
 .flower__grass--1 {
   -webkit-animation: moving-grass 2s linear infinite;
           animation: moving-grass 2s linear infinite;
@@ -550,6 +603,7 @@ body {
     transform: rotate(10deg) scale(0);
   }
 }
+
 .flower__grass__overlay {
   position: absolute;
   top: -10%;
@@ -563,7 +617,7 @@ body {
 .flower__g-long {
   --w: 2vmin;
   --h: 6vmin;
-  --c: #1aaa15;
+  --c: #b80000;
   position: absolute;
   bottom: 10vmin;
   left: -3vmin;
@@ -573,8 +627,10 @@ body {
   flex-direction: column;
   align-items: flex-end;
   -webkit-animation: flower-g-long-ans 3s linear infinite;
-          animation: flower-g-long-ans 3s linear infinite;
+  animation: flower-g-long-ans 3s linear infinite;
+  filter: drop-shadow(0 0 1.5vmin rgba(0, 0, 0, 0.8)); /* Agrega sombra para mejorar visibilidad */
 }
+
 @-webkit-keyframes flower-g-long-ans {
   0%, 100% {
     transform: rotate(-30deg) rotateY(-20deg);
@@ -619,9 +675,9 @@ body {
   width: 30vmin;
   height: 50vmin;
   border-top-left-radius: 100%;
-  border-left: 2vmin solid #00b815;
+  border-left: 2vmin solid #b80000;
   background-image: linear-gradient(to bottom, transparent, var(--dark-color) 60%);
-  -webkit-mask-image: linear-gradient(to top, transparent 30%, #00b815 60%);
+  -webkit-mask-image: linear-gradient(to top, transparent 30%, #b80000 60%);
 }
 .flower__g-right--1 {
   -webkit-animation: flower-g-right-ans 2.5s linear infinite;
@@ -699,7 +755,7 @@ body {
 .flower__g-front__line {
   width: 0.3vmin;
   height: 20vmin;
-  background-image: linear-gradient(to top, transparent, #00b815, transparent 100%);
+  background-image: linear-gradient(to top, transparent, #b80000, transparent 100%);
   position: relative;
 }
 .flower__g-front__leaf-wrapper {
@@ -808,9 +864,9 @@ body {
   border-radius: 100% 0% 0% 100%/100% 100% 0% 0%;
   box-shadow: inset 0 2px 1vmin hsla(184deg, 97%, 58%, 0.2);
   background-image: linear-gradient(to bottom left, transparent, var(--dark-color)), 
-  linear-gradient(to bottom right, #00b815 50%, transparent 50%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom right, #00b815 50%, transparent 50%, transparent);
-  mask-image: linear-gradient(to bottom right, #00b815 50%, transparent 50%, transparent);
+  linear-gradient(to bottom right, #b80000 50%, transparent 50%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom right, #b80000 50%, transparent 50%, transparent);
+  mask-image: linear-gradient(to bottom right, #b80000 50%, transparent 50%, transparent);
 }
 .flower__g-fr {
   position: absolute;
@@ -841,8 +897,8 @@ body {
   width: 30vmin;
   height: 50vmin;
   border-top-left-radius: 100%;
-  border-left: 2vmin solid #00b815;
-  -webkit-mask-image: linear-gradient(to top, transparent 25%, #00b815 50%);
+  border-left: 2vmin solid #b80000;
+  -webkit-mask-image: linear-gradient(to top, transparent 25%, #b80000 50%);
   position: relative;
   z-index: 1;
 }
@@ -855,8 +911,8 @@ body {
   border-radius: 100% 0% 0% 100%/100% 100% 0% 0%;
   box-shadow: inset 0 2px 1vmin hsla(184deg, 97%, 58%, 0.2);
   background-image: linear-gradient(to bottom left, transparent, var(--dark-color) 98%), 
-  linear-gradient(to bottom right, #00b815 45%, transparent 50%, transparent);
-  -webkit-mask-image: linear-gradient(135deg, #00b815 40%, transparent 50%, transparent);
+  linear-gradient(to bottom right, #b80000 45%, transparent 50%, transparent);
+  -webkit-mask-image: linear-gradient(135deg, #b80000 40%, transparent 50%, transparent);
 }
 .flower__g-fr__leaf--1 {
   left: 20vmin;
@@ -1042,6 +1098,259 @@ body {
   transform: scale(0.6) rotate(2deg);
   opacity: 0.7;
 }
+.long-g--9 {
+  left: -50vmin;
+  bottom: -5vmin;
+  transform-origin: center;
+  transform: scale(0.7) rotate(5deg);
+}
+
+.long-g--9 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 45%, #00b815 80%) !important;
+}
+
+.long-g--10 {
+  left: -30vmin;
+  bottom: -10vmin;
+  transform-origin: center;
+  transform: scale(0.6) rotateX(50deg);
+}
+
+.long-g--10 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 50%, #00b815 80%) !important;
+}
+
+.long-g--11 {
+  left: 0vmin;
+  bottom: -15vmin;
+  transform-origin: center;
+  transform: scale(0.75) rotate(-3deg);
+}
+
+.long-g--11 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 45%, #00b815 80%) !important;
+}
+
+.long-g--12 {
+  left: 20vmin;
+  bottom: -7vmin;
+  transform-origin: center;
+  transform: scale(0.65) rotateX(55deg);
+}
+
+.long-g--12 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 50%, #00b815 80%) !important;
+}
+
+.long-g--13 {
+  left: 35vmin;
+  bottom: -2vmin;
+  transform: scale(0.8) rotate(3deg);
+}
+
+.long-g--13 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 40%, #00b815 80%) !important;
+}
+
+.long-g--14 {
+  left: 50vmin;
+  bottom: 5vmin;
+  z-index: -1;
+  filter: blur(0.3vmin);
+  transform: scale(0.6) rotate(2deg);
+  opacity: 0.8;
+}
+
+.long-g--14 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 50%, #00b815 80%) !important;
+}
+
+.long-g--15 {
+  left: 10vmin;
+  bottom: 10vmin;
+  z-index: -1;
+  filter: blur(0.5vmin);
+  transform: scale(0.7) rotate(-2deg);
+  opacity: 0.9;
+}
+
+.long-g--15 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 45%, #00b815 80%) !important;
+}
+
+.long-g--16 {
+  left: -45vmin;
+  bottom: -8vmin;
+  transform-origin: center;
+  transform: scale(0.7) rotate(4deg);
+}
+
+.long-g--16 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 45%, #00b815 80%) !important;
+}
+
+.long-g--17 {
+  left: -25vmin;
+  bottom: -12vmin;
+  transform-origin: center;
+  transform: scale(0.65) rotateX(50deg);
+}
+
+.long-g--17 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 50%, #00b815 80%) !important;
+}
+
+.long-g--18 {
+  left: 5vmin;
+  bottom: -18vmin;
+  transform-origin: center;
+  transform: scale(0.75) rotate(-2deg);
+}
+
+.long-g--18 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 45%, #00b815 80%) !important;
+}
+
+.long-g--19 {
+  left: 22vmin;
+  bottom: -10vmin;
+  transform-origin: center;
+  transform: scale(0.65) rotateX(55deg);
+}
+
+.long-g--19 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 50%, #00b815 80%) !important;
+}
+
+.long-g--20 {
+  left: 37vmin;
+  bottom: -3vmin;
+  transform: scale(0.8) rotate(4deg);
+}
+
+.long-g--20 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 40%, #00b815 80%) !important;
+}
+
+.long-g--21 {
+  left: 52vmin;
+  bottom: 6vmin;
+  z-index: -1;
+  filter: blur(0.3vmin);
+  transform: scale(0.6) rotate(3deg);
+  opacity: 0.85;
+}
+
+.long-g--21 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 50%, #00b815 80%) !important;
+}
+
+.long-g--22 {
+  left: 12vmin;
+  bottom: 12vmin;
+  z-index: -1;
+  filter: blur(0.5vmin);
+  transform: scale(0.7) rotate(-1.5deg);
+  opacity: 0.9;
+}
+
+.long-g--22 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 45%, #00b815 80%) !important;
+}
+.long-g--23 {
+  left: -50vmin;
+  bottom: -5vmin;
+  transform-origin: center;
+  transform: scale(0.7) rotate(-3deg);
+}
+
+.long-g--23 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 45%, #00b815 80%) !important;
+}
+
+.long-g--24 {
+  left: -30vmin;
+  bottom: -10vmin;
+  transform-origin: center;
+  transform: scale(0.65) rotateX(50deg);
+}
+
+.long-g--24 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 50%, #00b815 80%) !important;
+}
+
+.long-g--25 {
+  left: -10vmin;
+  bottom: -15vmin;
+  transform-origin: center;
+  transform: scale(0.75) rotate(2deg);
+}
+
+.long-g--25 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 45%, #00b815 80%) !important;
+}
+
+.long-g--26 {
+  left: 15vmin;
+  bottom: -8vmin;
+  transform-origin: center;
+  transform: scale(0.65) rotateX(55deg);
+}
+
+.long-g--26 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 50%, #00b815 80%) !important;
+}
+
+.long-g--27 {
+  left: 30vmin;
+  bottom: -3vmin;
+  transform: scale(0.8) rotate(-4deg);
+}
+
+.long-g--27 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 40%, #00b815 80%) !important;
+}
+
+.long-g--28 {
+  left: 45vmin;
+  bottom: 8vmin;
+  z-index: -1;
+  filter: blur(0.3vmin);
+  transform: scale(0.6) rotate(3deg);
+  opacity: 0.85;
+}
+
+.long-g--28 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 50%, #00b815 80%) !important;
+}
+
+.long-g--29 {
+  left: 20vmin;
+  bottom: 15vmin;
+  z-index: -1;
+  filter: blur(0.5vmin);
+  transform: scale(0.7) rotate(1.5deg);
+  opacity: 0.9;
+}
+
+.long-g--29 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 45%, #00b815 80%) !important;
+}
+
+.long-g--30 {
+  left: 5vmin;
+  bottom: 10vmin;
+  z-index: -1;
+  filter: blur(0.4vmin);
+  transform: scale(0.75) rotate(-1deg);
+  opacity: 0.95;
+}
+
+.long-g--30 .leaf {
+  -webkit-mask-image: linear-gradient(to top, transparent 45%, #00b815 80%) !important;
+}
+
+
 .long-g .leaf {
   --w: 15vmin;
   --h: 40vmin;
@@ -1055,6 +1364,7 @@ body {
   -webkit-mask-image: linear-gradient(to top, transparent 20%, var(--dark-color));
   transform-origin: bottom center;
 }
+
 .long-g .leaf--0 {
   left: 2vmin;
   -webkit-animation: leaf-ans-1 4s linear infinite;
